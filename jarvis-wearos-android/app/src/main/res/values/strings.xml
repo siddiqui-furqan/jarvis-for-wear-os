@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">J.A.R.V.I.S.</string>
+    <string name="app_short_description">An AI-powered personal assistant built natively for Wear OS.</string>
+    <string name="model_designation">SM-R860 • MK-VI HUD</string>
+    <string name="mic_permission_rationale">Microphone access is required for J.A.R.V.I.S. voice command recognition.</string>
+</resources>

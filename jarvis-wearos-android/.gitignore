@@ -1,0 +1,65 @@
+# ============================================================================
+# J.A.R.V.I.S. for Wear OS (jarvis-for-wear-os) — .gitignore
+# ============================================================================
+
+# --- Android & Gradle Build Artifacts ---
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+build/
+.gradle/
+**/build/
+**/.gradle/
+captures/
+.externalNativeBuild/
+.cxx/
+*.hprof
+
+# --- Local Machine & Android SDK Configuration (NEVER COMMIT) ---
+local.properties
+**/local.properties
+
+# --- Signing Keystores & Release Credentials (NEVER COMMIT) ---
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+google-services.json
+
+# --- Environment & Secret Files (NEVER COMMIT) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Android Studio / IntelliJ IDEA ---
+*.iml
+.idea/
+**/.idea/
+.navigation/
+output.json
+
+# --- Node.js / Browser Simulator Companion ---
+node_modules/
+dist/
+dist-ssr/
+server.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Temporary & OS Metadata ---
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.bak
+*.tmp
+artifacts/

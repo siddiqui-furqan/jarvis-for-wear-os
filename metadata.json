@@ -1,0 +1,6 @@
+{
+  "name": "JARVIS — Galaxy Watch 4 AI Assistant",
+  "description": "Futuristic standalone Wear OS AI assistant tailored for the Samsung Galaxy Watch 4 circular 40mm display, featuring an animated Arc Reactor, voice interaction, BYOK AI providers, and native Kotlin architecture.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

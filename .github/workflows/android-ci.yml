@@ -1,0 +1,62 @@
+name: Android Wear OS CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: JDK 17 • Unit Tests & Debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle Cache
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Grant Execute Permission for gradlew
+        run: |
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+          elif [ -f "./jarvis-wearos-android/gradlew" ]; then
+            chmod +x ./jarvis-wearos-android/gradlew
+          fi
+
+      - name: Run Unit Tests (testDebugUnitTest)
+        run: |
+          if [ -f "./gradlew" ]; then
+            ./gradlew testDebugUnitTest --stacktrace
+          else
+            cd jarvis-wearos-android && ./gradlew testDebugUnitTest --stacktrace
+          fi
+
+      - name: Assemble Debug Wear OS APK (assembleDebug)
+        run: |
+          if [ -f "./gradlew" ]; then
+            ./gradlew assembleDebug --stacktrace
+          else
+            cd jarvis-wearos-android && ./gradlew assembleDebug --stacktrace
+          fi
+
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jarvis-wearos-debug-apk
+          path: |
+            app/build/outputs/apk/debug/*.apk
+            jarvis-wearos-android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
